@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🐜🐜🐜</title>
+    <style>
+        body {
+            cursor: none;
+            overflow: hidden;
+        }
+
+        .fakeCursor {
+            position: absolute;
+            width: 1%;
+            height: 1.85%;
+            pointer-events: none;
+            background: url('カーソル.png') no-repeat center center;
+            background-size: cover;
+            transition: transform 0.1s ease;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        const numCursors = 300; // カーソルの数
+        const fakeCursors = [];
+
+
+        for (let i = 0; i < numCursors; i++) {
+            const cursor = document.createElement('div');
+            cursor.classList.add('fakeCursor');
+            document.body.appendChild(cursor);
+            fakeCursors.push(cursor);
+        }
+
+
+        document.addEventListener('mousemove', (e) => {
+            const mouseX = e.pageX;
+            const mouseY = e.pageY;
+
+
+            fakeCursors.forEach((cursor, index) => {
+
+                const delayFactor = index * 10;
+                setTimeout(() => {
+                    cursor.style.transform = `translate(${mouseX}px, ${mouseY}px)`;
+                }, delayFactor);
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
